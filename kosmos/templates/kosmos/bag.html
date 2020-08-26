@@ -1,0 +1,46 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block head %}
+<script src="https://unpkg.com/moment"></script>
+<script type="text/javascript" src="{% static 'kosmos/bag.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>my makeup bag</h1>
+    {% for item in items %}
+        <div class='bag-item'>
+            {% if item.is_expired %}
+            <div class="alert alert-warning" role="alert">
+                This product is expired!
+              </div>
+            {% endif %}
+            <a href="{% url 'view_product' item.product.id %}">
+                <div class='product-name'><h3>{{ item.product.name }}</h3></div>
+                {% if item.product.img is None or item.product.img == '' %}
+                    <img class='item-img' src="{% static 'kosmos/images/no_img.png' %}">
+                {% else %}
+                    <img class='item-img' src='{{ item.product.img }}'>
+                {% endif %}
+            </a>
+            <div class='product-brand'>By {{ item.product.brand }}</div>
+            <div class="item-details">
+                Opened: <span class="open-date">{{ item.open_date }}</span><br>
+                Expires: <span class="expiry-date">{{ item.expiry }}</span><br>
+                {% if item.notifications %}
+                    <p class="bag-item-status">KOSMOS will notify you when this expires.</p>
+                    <p hidden class="notify">true</p>
+                {% else %}
+                    <p class="bag-item-status">KOSMOS will not notify you when this expires.</p>
+                    <p hidden class="notify">false</p>
+                {% endif %}
+                <p class="item-notes">{{ item.notes }}</p>
+            </div>
+            <button class="edit-item">Edit</button> <!--use JS to edit open date, expiry, notes, notifications-->
+            <button class="remove">Remove</button> 
+            <p hidden class="b-item-id">{{ item.id }}</p>
+        </div>
+    {% empty %}
+        Your bag is currently empty.
+    {% endfor %}
+{% endblock %}

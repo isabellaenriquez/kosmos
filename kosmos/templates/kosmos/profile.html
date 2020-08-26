@@ -1,0 +1,43 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block body %}
+<h1>@{{ user.username }}</h1>
+
+
+<div id="user-stats" class="card">
+    <div class="card-header">
+        <h3>statistics</h3>
+    </div>
+    <div id="statistics" class="card-body">
+        <span id="stats-hearts"><i class="fas fa-heart"></i> {{ hearts }}</span>
+        <p>joined {{ user.date_joined }}<br>
+        reviewed products {{ review_count }} time(s)<br>
+        gave an average rating of {{ avg_rating }}<br>
+        published {{ collection_count }} collection(s)<br></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3>recently published collections</h3>
+    </div>
+    <ul id="user-collect" class="list-group list-group-flush">
+        {% for collection in collections %}
+        {% if forloop.counter < 6 %}
+        <li class="list-group-item">
+            <h6>{{ collection.title }}</h6>
+            <div class="collection-short-dscrpt">
+                <p>{{ collection.description }}</p>
+                <a href="{% url 'view_collection' collection.id %}"><i class="fas fa-hand-holding-heart"></i> view collection</i></a>
+            </div>
+            <span class="tiny-text">Last updated {{ collection.timestamp }}</span>
+        </li>
+        {% endif %}
+        {% empty %}
+        <li class="list-group-item">
+            You haven't published any collections yet!
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

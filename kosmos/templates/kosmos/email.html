@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <style type="text/css">
+        body {
+            font-family: Calibri;
+            border-color: #5c63ab;
+            border-width: 5rem;
+        }
+
+        #product-img {
+            width: 20%;
+            display: inline-block;
+        }
+
+        #banner {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        #message {
+            background-color: #5c63ab;
+
+        }
+
+        #notes {
+            background-color: #51b6ff;
+        }
+
+        .text {
+            color: white;
+            display: inline-block;
+            vertical-align: top;
+            max-width: 70%;
+        }
+
+        .text-bubble{
+            margin: 0rem;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        #content {
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        #disclaimer {
+            color: grey;
+            font-size: x-small;
+        }
+
+        #block-body {
+            padding: 5rem;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #product-img {
+                width: 100%;
+            }
+
+            #block-body {
+                padding: 2rem;
+            }
+
+            .text{
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="kosmos-header">
+        <img id="banner"
+            src="https://lh3.googleusercontent.com/pw/ACtC-3e_jh5B7ome32RGgRBwXWkX2WWMcZAHqi0i_a03hr6GMR8IMRmPTkGqAZ_8raz9yYteCXHXF87zK7rz6QOF98VqUjUuHLMRs6J1fPe1FpFb6XlvQWZnivMcV-8y2xvuGyu1q46VXFejG76tSGeZ4lk=w1560-h260-no?authuser=0">
+    </div>
+    <div id="block-body">
+        <h1>Hey {{ user }}, looks like a product in your makeup bag has expired...</h1>
+        {% if not item_img %}
+        <div id="content">
+            <img id="product-img"
+                src="https://lh3.googleusercontent.com/yqXCnBFFIeAUT7QzdPaKKIfcC4yYjc64Uu4Ry2ATE5_bgNPYIpTCsQQmDOwfUtJNFAm_PDtR0KADwFJzBQNn3wy0vurFnTkYAt3h32pkHdPGglL2D3lXbufFXbiT8AvhRxx-rmPBMVNSjXg6Co9kN4yfMc3O1q054iglcH6KK7IzWCzuCiiMkAjXBzsha1az5j7qDhF3U-B-4vzcLO2jjcjwD9koEAYrpxoM0kQHfR2sOZ84mvM70PfH9X12mOY3_vGEdvjnV0M8SSiO9Q_oqW_NnPfCAZauEx1pW_CF63vgy8JpMVCnWZ5sJuFFlwWA4yLgmYfE3DqcuqZDhIXvnVMofVTlRSZdKR0CWX-JI53lRGSHQj7AHrkhN6sw606TtuwmOjIfVgDDVNlWlvwcK0ey2eY1A6IIJ6sdLN3vYtXWEflI13KJ2LXwe8GbXre-7RzZOIf5bJQdIXNE6nT6XkM00R4kVteURyy3MOmeeV-ydhPGpxoReYsHP8tkUKKndrKtxqEZ9SBcneoGwS_qixP5GKXw5J4PzS4p9BkAZHbEr75oCQARBwAFOsygPHFREys8Y4ha2buNAh2-0vjk3e3Eus35IW6VDc2BHqNwbe56YSIx6gIb5KFSUHbO2e4WmpQHVtH1V9y8QJz363GZ9jDaqZXVHOE9jP8uoGsA7zyY2DpCopNmTo4F_tv4=s960-no?authuser=1">
+        {% else %}
+        <img id="product-img" src="{{ item_img }}">
+        {% endif %}
+            <div class="text">
+                <div id="message" class="text-bubble">
+                    A little birdy told us that the {{ product }} in your bag has expired today! <br>
+                    Visit KOSMOS to replace this product or change expiry details.
+                </div>
+                {% if notes %}
+                <div id="notes" class="text-bubble">
+                    Your notes: <br>
+                    {{ notes }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div id="footer">
+            <p id="disclaimer">
+                This message was delivered to you because you turned on notifications for {{ product }}. To turn off
+                notifications for bag items, please go to KOSMOS and turn off notifications for those items.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

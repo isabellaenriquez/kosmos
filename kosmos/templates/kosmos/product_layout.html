@@ -1,0 +1,47 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block body %}
+<h1>{{ page_title }}</h1>
+{% block filter_form %}
+{% endblock %}
+
+    <div class="product-grid">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3">
+                <div class="product-container">
+                    <a href="{% url 'view_product' product.id %}">
+                        <div class='product-img-contained'>
+                            {% if product.img is None or product.img == '' %}
+                            <img class='product-img' src="{% static 'kosmos/images/no_img.png' %}">
+                            {% else %}
+                            <img class='product-img' src='{{ product.img }}'>
+                            {% endif %}
+                        </div>
+                        <div class='product-name'>{{ product.name }}</div>
+                    </a>
+                    <div class='product-brand'>By {{ product.brand }}</div>
+                    <div class='product-price'>
+                        {% if product.price == 0 %}
+                        Price Unknown
+                        {% else %}
+                        {{ product.currency }}${{ product.price }}
+                        {% endif %}
+                    </div>
+                    <div class='rating'>
+                        {% if product.avg_rating == 0 or product.avg_rating is None %}
+                        No ratings yet
+                        {% else %}
+                        {{ product.avg_rating }} stars
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% block page_numbers %}
+    {% endblock %}
+
+    {% endblock %}

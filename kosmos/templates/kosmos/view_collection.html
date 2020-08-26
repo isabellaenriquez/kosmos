@@ -1,0 +1,53 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block head %}
+<script type="text/javascript" src="{% static 'kosmos/view_collection.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<img class="view-collect-img" src="{% static 'kosmos/images/collection-banners/' %}{{ collection.banner_num }}.png">
+    <h1 class="view-collect-title">{{ collection.title }}</h1>
+    <h6>By <a href="{% url 'profile' collection.author %}">@{{ collection.author }}</a></h6>
+    <p class="tiny-text">Last modified: {{ collection.timestamp }}</p>
+    <div class="unedited">
+        <div class="view-collect-dscrpt">{{ collection.description }}</div>
+        <div class="view-collect-status">
+            {% if collection.public %}
+                Public Collection
+            {% else %}
+                Private Collection
+            {% endif %}
+        </div>
+        {% if request.user.is_authenticated %}
+            {% if liked %}
+                <button class="hearted"><i class="fas fa-heart"></i><span class="heart-num">{{ hearts }}</span></button>
+            {% else %}
+                <button class="hearts"><i class="far fa-heart"></i><span class="heart-num">{{ hearts }}</span></button>
+            {% endif %}
+        {% else %}
+            <button class="disabled-heart" disabled><i class="fas fa-heart"></i><span class="heart-num">{{ hearts }}</span></button>
+        {% endif %}
+        {% if edit %}
+            <button id="edit-collect">Edit</button>
+        {% endif %}
+    </div>
+
+    {% for item in items %}
+        <div class="bag-item">
+            <a href="{% url 'view_product' item.product.id %}">
+                <div class='product-name'><h3>{{ item.product.name }}</h3></div>
+                {% if item.product.img is None or item.product.img == '' %}
+                    <img class='item-img' src="{% static 'kosmos/images/no_img.png' %}">
+                {% else %}
+                    <img class='item-img' src='{{ item.product.img }}'>
+                {% endif %}
+            </a>
+            <div class='product-brand'>By {{ item.product.brand }}</div>
+            {% if edit %}
+                <button class="remove">Remove</button>
+                <p hidden class="c-item-id">{{ item.id }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

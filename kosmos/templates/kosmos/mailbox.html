@@ -1,0 +1,19 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block head %}
+<script type="text/javascript" src="{% static 'kosmos/mailbox.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<h3>You have <span id="notif-count">{{ notification_count }}</span> notification(s).</h3>
+
+{% for item in expired_items %}
+<div class="alert alert-info" role="alert">
+<div class="notif-msg">Your {{ item.product.name }} expired on {{ item.expiry }}.</div>
+<p hidden class="item-id">{{ item.id }}</p>
+<button class="remove-notif">Remove from bag</button>
+</div>
+{% endfor %}
+
+{% endblock %}

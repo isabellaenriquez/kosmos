@@ -1,0 +1,158 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block head %}
+<script src="https://unpkg.com/moment"></script>
+<script type="text/javascript" src="{% static 'kosmos/view_product.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+{% if product.img is None or product.img == '' %}
+<img class='view-product-img' src="{% static 'kosmos/images/no_img.png' %}">
+{% else %}
+<img class='view-product-img' src='{{ product.img }}'>
+{% endif %}
+<h1>{{ product.name }}</h1>
+<h3>By {{ product.brand }}</h3>
+<h6>{{ product.get_product_type_display }} // {{ product.get_category_display }}</h6>
+<p>{{ product.currency }}${{product.price}}</p>
+<ul id="view-product-colours">
+    Colours:
+    {% for colour in colours %}
+    <li class="colour"><span class="dot" style="background-color: {{colour.hex_value}};"></span> {{ colour.name }}</li>
+    {% empty %}
+    N/A
+    {% endfor %}
+</ul>
+<p class="view-product-tags">
+    Tags: {% for tag in tags %}<span class="tag">{{tag}}</span> {% empty %} None {% endfor %}
+</p>
+<p class="view-product-dscrpt">{{product.description}}</p>
+{% if product.link or product.link != '' %}
+<a href="{{product.link}}">View original product page</a>
+{% endif %}
+
+{% if request.user.is_authenticated %}
+{% if in_bag %}
+<p>This item is currently in your makeup bag.</p>
+{% endif %}
+<button id='add-product'>+</button>
+<form id="add-product-form" style="display: none" action="{% url 'view_product' product.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="user-collections">Add product to...</label>
+        <select id="selection" name="selection" class="form-control" id="user-collections">
+            <option value='bag'>My Makeup Bag</option>
+            {% for collection in collections %}
+            <option value='{{collection.id}}'>{{ collection.title }}</option>
+            {% endfor %}
+        </select>
+        <div id="dates" style="display: none">
+            <label for="openDate">Date Opened</label>
+            <input type="date" name="openDate" id="openDate">
+            <label for="expiry">Expiry</label>
+            <input type="date" name="expiry" id="expiry">
+            <p>Suggested use: <span id="suggested-expiry">{{ product.expiry }}</span> months</p>
+            <div class="form-check">
+                <input name="notify" value="True" class="form-check-input" type="checkbox" value="" id="notify-check">
+                <label class="form-check-label" for="notify-check">
+                    Notify when expired
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <textarea name="notes" class="form-control" id="notes" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit">Add</button>
+</form>
+{% endif %}
+
+
+<div class="review-section">
+    <h3>Reviews for {{ product.name }}</h3>
+    <h6 class="avg-rating">
+        {% if product.avg_rating == 0 %}
+        Not enough reviews to generate an average rating.
+        {% else %}
+        Average rating: {{ product.avg_rating }} stars
+        {% endif %}
+    </h6>
+    {% if request.user.is_authenticated and not reviewed %}
+    <form action="{% url 'review' %}" method="post">
+        {% csrf_token %}
+        <label for="star-rating"><i class="fas fa-star"></i> Star Rating</label>
+        <div id="star-rating">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input required value="1" type="radio" id="1star" name="stars" class="custom-control-input">
+                <label class="custom-control-label" for="1star">1</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input value="2" type="radio" id="2star" name="stars" class="custom-control-input">
+                <label class="custom-control-label" for="2star">2</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input value="3" type="radio" id="3star" name="stars" class="custom-control-input">
+                <label class="custom-control-label" for="3star">3</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input value="4" type="radio" id="4star" name="stars" class="custom-control-input">
+                <label class="custom-control-label" for="4star">4</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input value="5" type="radio" id="5star" name="stars" class="custom-control-input">
+                <label class="custom-control-label" for="5star">5</label>
+            </div>
+        </div>
+        <input hidden name="product" value="{{ product.id }}">
+        <div class="form-group">
+            <label for="review-text">Details (optional)</label>
+            <textarea class="form-control" placeholder="Elaborate on your rating..." name="text"
+                id="review-text"></textarea>
+        </div>
+        <button type="submit">Post review</button>
+    </form>
+    <p class="tiny-text">You may only write one review per product. Reviews cannot be deleted or edited. Upon account
+        deletion, your review will be deleted, however, your rating shall remain included in the average rating of that
+        product.</p>
+    {% elif request.user.is_authenticated %}
+    You have already written a review for this product.
+    {% endif %}
+    {% for review in reviews %}
+    <div class="card">
+        <div class="card-body">
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            {% if review.stars >= 2 %}
+            <i class="fas fa-star"></i>
+            {% else %}
+            <i class="far fa-star"></i>
+            {% endif %}
+            {% if review.stars >= 3 %}
+            <i class="fas fa-star"></i>
+            {% else %}
+            <i class="far fa-star"></i>
+            {% endif %}
+            {% if review.stars >= 4 %}
+            <i class="fas fa-star"></i>
+            {% else %}
+            <i class="far fa-star"></i>
+            {% endif %}
+            {% if review.stars >= 5 %}
+            <i class="fas fa-star"></i>
+            {% else %}
+            <i class="far fa-star"></i>
+            {% endif %}
+        </div>
+        <p class="review-author">By <a href="{% url 'profile' review.author %}">@{{ review.author }}</a></p>
+        <p class="review-content">{{ review.content }}</p>
+        <p class="tiny-text">{{ review.timestamp }}</p>
+    </div></div>
+    {% endfor %}
+</div>
+
+{% endblock %}

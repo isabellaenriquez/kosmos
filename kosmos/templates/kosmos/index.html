@@ -1,0 +1,82 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block body %}
+<div id="index-body">
+<h1 id="welcome-banner" class="index-header">welcome.</h1>
+<img id="index-logo" src="{% static 'kosmos/images/logo.png' %}">
+<h3 class="index-header">about KOSMOS</h3>
+<table id="table-contents">
+    <tr>
+        <th>jump to:</th>
+    </tr>
+    <tr>
+        <td><a href="#our-story">our story</a></td>
+    </tr>
+    <tr>
+        <td><a href="#our-founder">our founder</a></td>
+    </tr>
+    <tr>
+        <td><a href="#credits">acknowledgements and credits</a></td>
+    </tr>
+</table>
+
+<h3 id="our-story" class="index-header">our story</h3>
+    <img class="index-img" src="{% static 'kosmos/images/our_story1.svg' %}">
+<p>Makeup, makeup, makeup... We love makeup. It helps us enhance our natural features, enabling us to become artists
+    with our faces as our canvases. It does, however, come at a cost: EXPIRATION (other than the actual money it takes to pay for it of course). Makeup, unfortunately, is not forever. It
+    is actually not safe to use expired makeup, as they can cause infections, similar to how eating that expired yogurt
+    made you feel sick to your stomach.</p>
+
+<p>So it's important to remember when you need to replace your makeup. However, this process can be difficult. Perhaps
+    you got excited to use your makeup and completely forgot to write down when you opened it, so you have no idea when
+    you opened it. Or maybe you decided to test it once, but then forgot about it until months later, and have no clue
+    when that one-time use took place? Maybe you pretend to be responsible, writing down when you've opened your
+    products in a notes app, however, you fail to actually remember to check for these dates.</p>
+
+<p>KOSMOS aims to eliminate this problem. No longer do you have to throw out makeup you aren't entirely sure is expired,
+    nor pretend it is okay to use expired makeup (it's not). KOSMOS, your virtual makeup bag, will actually enable you
+    to not only keep track of the contents of your makeup bag digitalized, but also remind you when these contents are
+    expired (watch out for emails from our lovely bot at noreplykosmos@gmail.com)! KOSMOS aims to make this experience 
+    less of a hassle and more convenient, all at the click of a button. With your free KOSMOS account, you can browse our 
+    database of over 900 makeup products, and pick and choose the ones you'd like to keep track of in your virtual makeup bag.</p>
+
+<p>Beyond that, KOSMOS actually allows you to curate more than a bag of items you already own, but also COLLECTIONS.
+    With KOSMOS Collections, you will be able to create collections of products, complete with descriptions, and even
+    publicize them for other KOSMOS users. You can browse other users' publicized collections in the Public Collections
+    page, and even send users love with hearts.</p>
+
+<p>Finally, since KOSMOS aims to ease the makeup buying and owning experience, KOSMOS allows you to leave reviews on
+    makeup products. As a third-party, we have no bias towards reviews at all, and will show every side.</p>
+<img class="index-img" src="{% static 'kosmos/images/our_story2.svg' %}">
+
+<p>So what are you waiting for? <a href="{% url 'register' %}">Get started with KOSMOS today.</a></p>
+<h3 id="our-founder" class="index-header">our founder</h3>
+<img class="index-img" src="{% static 'kosmos/images/my_icon.svg' %}">
+<p>Hi there! My name is Isabella Enriquez. I'm an undergraduate CS student, and the brain behind KOSMOS. </p>
+<p>Over the COVID-19 pandemic, I decided to expand my skill set by taking CS50's web development course. Over the past
+    few months, I have been learning web development and doing many projects, which ends in this, my capstone project.
+    At first, I had no idea what to do for the capstone, as this was the first and only project in the course that was
+    to be our own original ideas. Then I thought about makeup, and how I, for some reason, suck at remembering expiry
+    dates, which is really not good. I created KOSMOS to solve this problem, to automate something that is pretty
+    prominent in my life.</p>
+<p>After this summer, I will be continuing my undergraduate studies in computer science. I hope to continue working on
+    my web development skills, and also hope to dive into game development as well. Keep up with me on LinkedIn,
+    GitHub, or my personal website in the links below! <!--Check out the last link to see the repository for KOSMOS.-->
+</p>
+
+<div id="socials">
+    <a href="https://www.linkedin.com/in/isabella-enriquez-9543851a0/"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.github.com/isabellaenriquez"><i class="fab fa-github"></i></a>
+    <a href="https://isabellaenriquez.github.io"><i class="fas fa-address-card"></i></a>
+    <!--a href="#"><i class="fas fa-code"></i></a>-->
+</div>
+
+<h3 id="credits" class="index-header">acknowledgements and credits</h3>
+<p>Makeup database imported from the <a href="https://makeup-api.herokuapp.com/">Makeup API</a>. All information--except
+    for reviews, ratings, some product types, and some categories--are accredited to them.<br>
+<p>Thank you to Harvard University, the team behind CS50, and most importantly Brian Yu, who taught the CS50 Web
+    Programming with Python and JavaScript course, and shoutout to all the markers. I appreciate all the time and effort
+    put into the course and hope to take another CS50 course in the future.</p>
+</div>
+{% endblock %}

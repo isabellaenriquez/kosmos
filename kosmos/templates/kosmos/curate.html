@@ -1,0 +1,42 @@
+{% extends 'kosmos/layout.html' %}
+{% load static %}
+
+{% block body %}
+<h1>{{ page_title }}</h1>
+<form action="{% url 'curate' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="collect-title">Title</label>
+    <input required type="text" class="form-control" id="collect-title" name="title"
+        placeholder="@{{request.user}}'s Collection...">
+    </div>
+    
+    <div class="form-group">
+        <label for="collect-dscrpt">Description (optional)</label>
+        <textarea class="form-control" placeholder="Describe your collection..." name="dscrpt" id="collect-dscrpt"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Banner</label>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input checked required type="radio" id="img0" name="banner" class="custom-control-input" value=0>
+            <label class="custom-control-label" for="img0"><img class="banner-choice"
+                    src="{% static 'kosmos/images/collection-banners/0.png' %}"></label>
+        </div>
+        {% for i in '01234567890'|make_list %}
+        <div class="custom-control custom-radio custom-control-inline">
+            <input required type="radio" id="img{{forloop.counter}}" name="banner" class="custom-control-input"
+                value={{forloop.counter}}>
+            <label class="custom-control-label" for="img{{forloop.counter}}"><img class="banner-choice"
+                    src="{% static 'kosmos/images/collection-banners/' %}{{ forloop.counter }}.png"></label>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="form-check">
+        <input name="public" value="True" class="form-check-input" type="checkbox" value="" id="notify-check">
+        <label class="form-check-label" for="defaultCheck1">
+            Make collection public
+        </label>
+    </div>
+    <button type="submit">Create Collection</button>
+</form>
+{% endblock %}

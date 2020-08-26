@@ -1,0 +1,24 @@
+{% extends 'kosmos/layout.html' %}
+
+{% block body %}
+<h1>new user</h1>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input required class="form-control" autofocus type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input required class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <input required class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input required class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    Already have an account? Log in <a href="{% url 'login' %}">here.</a>
+
+{% endblock %}

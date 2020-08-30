@@ -1,7 +1,9 @@
 # KOSMOS — your virtual makeup bag
+<img src="https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/kosmos_banner.png">
 
 ## Index
 - <a href="#preface">Preface</a>
+- <a href="#tools-and-technologies">Tools and Technologies</a>
 - <a href="#pre-requisites">Pre-requisites</a>
 - <a href="#mission">Mission</a>
 - <a href="#how-kosmos-is-different-from-other-cs50w-projects">How KOSMOS is Different From Other CS50W Projects</a>
@@ -11,11 +13,29 @@
 ## Preface
 This project was created as my capstone project for CS50's Web Programming with Python and JavaScript course. It uses Python Django on the back-end, and vanilla JavaScript on the front-end.
 
+## Tools and Technologies
+### Languages
+- Python 3.8.2
+- JavaScript
+- HTML
+- CSS/Sass
+
+### Frameworks
+- Django
+
+### IDE
+- Visual Studio Code
+
+### Other
+- Celery (task queue)
+- RabbitMQ (message-broker)
+
 ## Pre-requisites
 To run, please download the files in the requirements.txt file. Recommended browser: Google Chrome.
 To run the email and notification functionality, you'll need to run the Celery task queue, and also change the EMAIL_HOST, EMAIL_HOST_USER, and EMAIL_HOST_PASSWORD to the SMTP server, email, and email password of your choice. 
 
 ## Mission
+<img src="https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/logo.png">
 <p>KOSMOS was designed to rid people of the burden of makeup expiry dates. It allows registered users to add products to their "virtual makeup bags," and input the expiry dates for these products. Upon expiry, the user will be notified via the site and email, reminding users to throw away those icky products and/or replace them. </p>
 <p>Beyond the virtual makeup bags, KOSMOS allows users to curate "collections" of makeup products and even publish them for other KOSMOS users to see and "heart." While viewing makeup products from our database of over 900, users can read and write reviews for products. KOSMOS being a third-party website eliminates any bias or paid-for commentary of these products.</p>
 <p>Overall, the main goal of KOSMOS is to make the makeup buying and maintaining process simple and transparent. We're here to make making you beautiful beautiful in itself.</p>

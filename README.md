@@ -8,6 +8,7 @@
 - <a href="#mission">Mission</a>
 - <a href="#how-kosmos-is-different-from-other-cs50w-projects">How KOSMOS is Different From Other CS50W Projects</a>
 - <a href="#current-features">Current Features</a>
+  - <a href="#watch-the-demo">Watch the Demo!</a>
 - <a href="#future-features">Future Features</a>
 
 ## Preface
@@ -49,7 +50,7 @@ To run the email and notification functionality, you'll need to run the Celery t
 
 ## Current Features
 - Mobile responsive!
-<br>![gif showing KOSMOS site responsive design](https://github.com/me50/isabellaenriquez/blob/web50/projects/2020/x/capstone/capstone/kosmos/static/kosmos/images/responsiveness.gif)
+<br>![gif showing KOSMOS site responsive design](https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/demo/responsiveness.gif)
 <br>File explanation, along with their respective views.py functions, if applicable:
 - Navigation bar (created in layout.html)
 - Home page (index.html, views.index): The home page, with sections for KOSMOS' story, and the founder's story
@@ -65,7 +66,9 @@ To run the email and notification functionality, you'll need to run the Celery t
 - Curate (curate.html, views.curate): Registered users can create collections, choosing a title, description (optional), banner, and whether or not they would like that collection to be public.
 - View Collection (view_collection.html, view_collection.js, views.view_collection): Users can browse a collection's content. If the user is author, they can make changes to the collection's details.
 - Mailbox (mailbox.html, mailbox.js, views.mailbox): This is where registered users receive notifications for product expiries. An exclamation mark will appear beside the mailbox when the user has any outstanding notifications. Notifications are removed when the user removes the associated product or extends the expiry date. 
-- Emails (email.html): This is the template for the emails sent out to users when an expired product is detected. The actual functionality is carried out by Celery, living in celery.py and tasks.py. Assuming the servers are all up and running, expiry detection takes place at the start of every day (GMT-4). When a product is detected, the database is changed and an email is sent out to the respective user by RabbitMQ via Google SMTP.
+- Emails (email.html): 
+<img src="https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/demo/email.png">
+<br>This is the template for the emails sent out to users when an expired product is detected. The actual functionality is carried out by Celery, living in celery.py and tasks.py. Assuming the servers are all up and running, expiry detection takes place at the start of every day (GMT-4). When a product is detected, the database is changed and an email is sent out to the respective user by RabbitMQ via Google SMTP.
 
 ### Management Commands
 These commands were made to modify my large database, as doing it manually would've taken far too long.
@@ -73,7 +76,7 @@ These commands were made to modify my large database, as doing it manually would
 - import : Imported the database, with each entry as a MakeupProduct, with code to make sure the information fit the formats created in models.py.
 - lip_fix : I noticed there was a lack of consistency with some of the lip products in the database (for example, the original database had lipstick as both a product type and category, with lip gloss and liner falling under the lipstick category). I decided to make it so there was an umbrella "lip product" product type, with lip stick, lip liner, lip gloss, and lip stain all falling as categories under it.
 
-### Watch the demo!
+### Watch the Demo!
 Click <a href="https://www.youtube.com/watch?v=4kyZ7RuZS3k&feature=youtu.be">here.</a>
 
 ## Future Features

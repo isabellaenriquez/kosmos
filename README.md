@@ -11,9 +11,6 @@
   - <a href="#watch-the-demo">Watch the Demo!</a>
 - <a href="#future-features">Future Features</a>
 
-## Preface
-This project was created as my capstone project for CS50's Web Programming with Python and JavaScript course. It uses Python Django on the back-end, and vanilla JavaScript on the front-end.
-
 ## Tools and Technologies
 ### Languages
 - Python 3.8.2

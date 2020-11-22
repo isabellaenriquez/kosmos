@@ -2,7 +2,6 @@
 <img src="https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/kosmos_banner.png">
 
 ## Index
-- <a href="#preface">Preface</a>
 - <a href="#tools-and-technologies">Tools and Technologies</a>
 - <a href="#pre-requisites">Pre-requisites</a>
 - <a href="#mission">Mission</a>

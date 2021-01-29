@@ -30,15 +30,16 @@ h1, h2, h3, h4, h5, h6 {
 button, .view-collect-status {
   border-color: #78B2C5;
   background-color: #DCE5ED;
-  padding: 10px;
-  border-radius: 5px;
-  border-width: 2px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border-style: solid;
+  transition: 1s;
 }
 
 .view-collect-status {
   display: inline-block;
-  color: #78B2C5;
-  border-style: outset;
+  background-color: #78B2C5;
+  color: white;
 }
 
 .unedited {
@@ -53,6 +54,7 @@ button:hover {
   border-color: #DCE5ED;
   background-color: #78B2C5;
   color: white;
+  transition: 1s;
 }
 
 #collections-header h1 {
@@ -97,16 +99,7 @@ button:hover {
 }
 
 .product-img {
-  position: absolute;
-  bottom: 1rem;
-  display: block;
-  width: 75%;
-}
-
-.product-img-contained {
-  overflow: hidden;
-  height: 15rem;
-  position: relative;
+  width: 60%;
 }
 
 .col {
@@ -120,10 +113,10 @@ button:hover {
 .bag-item {
   border-color: lightgrey;
   border-style: solid;
-  border-radius: 5px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding: 25px;
+  border-width: 0.1rem;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
 }
 
 .collection-short-dscrpt p {
@@ -170,8 +163,7 @@ button:hover {
 }
 
 .card {
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 0.5rem;
 }
 
 .tiny-text {
@@ -212,10 +204,39 @@ button:hover {
   border-color: white;
 }
 
+#collection-cards {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#collection-items {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 2rem;
+}
+
+#add-product-form {
+  background-color: #78B2C5;
+  color: white;
+  border-color: #DCE5ED;
+  border-style: solid;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  margin: 0.5rem 0;
+}
+
 @media only screen and (max-width: 768px) {
   .product-img {
     height: 100%;
     width: auto;
+  }
+
+  #collection-cards {
+    grid-template-columns: auto;
   }
 }
 

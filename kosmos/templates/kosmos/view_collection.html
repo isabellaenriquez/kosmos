@@ -33,6 +33,7 @@
         {% endif %}
     </div>
 
+    <div id="collection-items">
     {% for item in items %}
         <div class="bag-item">
             <a href="{% url 'view_product' item.product.id %}">
@@ -50,4 +51,5 @@
             {% endif %}
         </div>
     {% endfor %}
+</div>
 {% endblock %}

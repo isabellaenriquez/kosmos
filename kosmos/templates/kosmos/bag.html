@@ -8,6 +8,7 @@
 
 {% block body %}
     <h1>my makeup bag</h1>
+    <div id="collection-items">
     {% for item in items %}
         <div class='bag-item'>
             {% if item.is_expired %}
@@ -43,4 +44,5 @@
     {% empty %}
         Your bag is currently empty.
     {% endfor %}
+</div>
 {% endblock %}

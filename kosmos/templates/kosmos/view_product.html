@@ -38,7 +38,7 @@
 {% if in_bag %}
 <p>This item is currently in your makeup bag.</p>
 {% endif %}
-<button id='add-product'>+</button>
+<button id='add-product'>Add product +</button>
 <form id="add-product-form" style="display: none" action="{% url 'view_product' product.id %}" method="post">
     {% csrf_token %}
     <div class="form-group">

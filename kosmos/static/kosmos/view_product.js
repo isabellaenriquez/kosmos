@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     });
 
     function showForm(button){
-        button.innerHTML = 'x';
+        button.innerHTML = 'Cancel';
         button.addEventListener('click', () =>{
             hideForm(button);
         })
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     }
 
     function hideForm(button){
-        button.innerHTML = '+';
+        button.innerHTML = 'Add product +';
         button.addEventListener('click', () =>{
             showForm(button);
         })

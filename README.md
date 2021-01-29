@@ -46,7 +46,7 @@ To run the email and notification functionality, you'll need to run the Celery t
 
 ## Current Features
 - Mobile responsive!
-<br>![gif showing KOSMOS site responsive design](https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/demo/responsiveness.gif)
+<br>![gif showing KOSMOS site responsive design](https://github.com/isabellaenriquez/kosmos/blob/master/capstone/kosmos/static/kosmos/responsiveness.gif)
 <br>File explanation, along with their respective views.py functions, if applicable:
 - Navigation bar (created in layout.html)
 - Home page (index.html, views.index): The home page, with sections for KOSMOS' story, and the founder's story
@@ -63,7 +63,7 @@ To run the email and notification functionality, you'll need to run the Celery t
 - View Collection (view_collection.html, view_collection.js, views.view_collection): Users can browse a collection's content. If the user is author, they can make changes to the collection's details.
 - Mailbox (mailbox.html, mailbox.js, views.mailbox): This is where registered users receive notifications for product expiries. An exclamation mark will appear beside the mailbox when the user has any outstanding notifications. Notifications are removed when the user removes the associated product or extends the expiry date. 
 - Emails (email.html): 
-<img src="https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/demo/email.png">
+<img src="https://github.com/isabellaenriquez/kosmos/blob/master/capstone/kosmos/static/kosmos/images/email.png">
 <br>This is the template for the emails sent out to users when an expired product is detected. The actual functionality is carried out by Celery, living in celery.py and tasks.py. Assuming the servers are all up and running, expiry detection takes place at the start of every day (GMT-4). When a product is detected, the database is changed and an email is sent out to the respective user by RabbitMQ via Google SMTP.
 
 ### Management Commands

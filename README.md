@@ -2,7 +2,6 @@
 <img src="https://github.com/isabellaenriquez/kosmos/blob/master/kosmos/static/kosmos/images/kosmos_banner.png">
 
 ## Index
-- <a href="#preface">Preface</a>
 - <a href="#tools-and-technologies">Tools and Technologies</a>
 - <a href="#pre-requisites">Pre-requisites</a>
 - <a href="#mission">Mission</a>
@@ -10,9 +9,6 @@
 - <a href="#current-features">Current Features</a>
   - <a href="#watch-the-demo">Watch the Demo!</a>
 - <a href="#future-features">Future Features</a>
-
-## Preface
-This project was created as my capstone project for CS50's Web Programming with Python and JavaScript course. It uses Python Django on the back-end, and vanilla JavaScript on the front-end.
 
 ## Tools and Technologies
 ### Languages

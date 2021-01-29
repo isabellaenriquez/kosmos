@@ -275,7 +275,7 @@ def my_bag(request):
     except: # bag hasn't been created yet
         bag = MakeupBag.objects.create(owner=user)
     
-    bag_items = MakeupBagItem.objects.filter(bag=bag)
+    bag_items = MakeupBagItem.objects.filter(bag=bag).order_by('-open_date')
     return render(request, 'kosmos/bag.html', context={
         'page_title': 'my makeup bag',
         'bag': bag,

@@ -44,6 +44,8 @@ To run the email and notification functionality, you'll need to run the Celery t
 
 ## Current Features
 - Free user registration and login
+- Responsive design
+<br>![gif showing KOSMOS site responsive design](https://github.com/isabellaenriquez/kosmos/blob/master/capstone/kosmos/static/kosmos/responsiveness.gif)
 - Database of over 900 makeup products
 - Easy product browsing, complete with filters, sorts, and search functionality
 - Detailed product pages, including information such as brand, price, reviews and average rating (powered by user-submitted reviews), available colours (including previews for each colour), types, categories, tags, and pictures
@@ -54,9 +56,6 @@ To run the email and notification functionality, you'll need to run the Celery t
 - Notification via email and the on-site mailbox feature ijmplemented using an asynchronous task queue (Celery) and message broker (RabbitMQ)
 <img src="https://github.com/isabellaenriquez/kosmos/blob/master/capstone/kosmos/static/kosmos/images/email.png">
 <br>This is the template for the emails sent out to users when an expired product is detected. The actual functionality is carried out by Celery, living in celery.py and tasks.py. Assuming the servers are all up and running, expiry detection takes place at the start of every day (GMT-4). When a product is detected, the database is changed and an email is sent out to the respective user by RabbitMQ via Google SMTP.
-- Responsive design
-<br>
-![gif showing KOSMOS site responsive design](https://github.com/isabellaenriquez/kosmos/blob/master/capstone/kosmos/static/kosmos/images/responsiveness.gif)
 
 ### Management Commands
 These commands were made to modify my large database, as doing it manually would've taken far too long.
